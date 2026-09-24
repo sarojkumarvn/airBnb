@@ -18,9 +18,9 @@ public class Payment {
     @Column(unique = true , nullable = false)
     private String transactionId ;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private PaymentStatus paymentStatus ;
+//    @Enumerated(EnumType.STRING)
+//    @Column(nullable = false)
+//    private PaymentStatus paymentStatus ;
 
 
 
