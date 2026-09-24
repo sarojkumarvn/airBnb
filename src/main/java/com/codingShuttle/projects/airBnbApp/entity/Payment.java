@@ -21,7 +21,7 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PaymentStatus paymentStatus ;
-    // Just for testing purpose
+    // Just for testing purpose 1 
 
 
 
