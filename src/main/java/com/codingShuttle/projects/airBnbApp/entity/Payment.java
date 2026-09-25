@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -21,7 +23,20 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PaymentStatus paymentStatus ;
-    // Just for testing purpose 1 
+
+
+    @Column(nullable = false , precision = 10 , scale = 2)
+    private BigDecimal amount  ;
+
+
+
+
+
+
+
+
+
+
 
 
 
