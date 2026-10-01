@@ -5,6 +5,7 @@ import com.codingShuttle.projects.airBnbApp.entity.Hotel;
 import com.codingShuttle.projects.airBnbApp.entity.Room;
 import com.codingShuttle.projects.airBnbApp.exception.ResourceNotFoundException;
 import com.codingShuttle.projects.airBnbApp.repository.HotelRepository;
+import com.codingShuttle.projects.airBnbApp.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -19,6 +20,7 @@ public class HotelServiceImpl implements HotelService{
     private final HotelRepository hotelRepository;
     private final ModelMapper modelMapper;
     private final InventoryService inventoryService;
+    private final RoomRepository roomRepository ;
 
     @Override
     public HotelDto createNewHotel(HotelDto hotelDto) {
@@ -60,7 +62,8 @@ public class HotelServiceImpl implements HotelService{
 
         hotelRepository.deleteById(id);
         for(Room room: hotel.getRooms()) {
-            inventoryService.deleteFutureInventories(room);
+            inventoryService.deleteAllInventories(room);
+            roomRepository.deleteById(room.getId());
         }
     }
 
