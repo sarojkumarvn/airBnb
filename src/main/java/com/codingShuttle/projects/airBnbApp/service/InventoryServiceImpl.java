@@ -8,11 +8,11 @@ import com.codingShuttle.projects.airBnbApp.entity.Room;
 import com.codingShuttle.projects.airBnbApp.repository.InventoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -23,6 +23,7 @@ import java.time.temporal.ChronoUnit;
 public class InventoryServiceImpl implements InventoryService{
 
     private final InventoryRepository inventoryRepository;
+    private final ModelMapper modelMapper ;
 
     @Override
     public void initializeRoomForAYear(Room room) {
@@ -61,6 +62,6 @@ public class InventoryServiceImpl implements InventoryService{
                  pageable) ;
 
 
-        return null ;
+        return hotelPge.map((element) -> modelMapper.map(element , HotelDto.class)) ;
     }
 }
