@@ -6,12 +6,16 @@ import com.codingShuttle.projects.airBnbApp.entity.enums.BookingStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Getter
+@Setter
 @Data
 @AllArgsConstructor
 public class BookingDto {

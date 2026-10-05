@@ -1,7 +1,8 @@
 package com.codingShuttle.projects.airBnbApp.repository;
 
-import com.codingShuttle.projects.airBnbApp.entity.Guest;
+import com.codingShuttle.projects.airBnbApp.entity.Booking;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookingRepository extends JpaRepository<Guest , Long> {
+public interface BookingRepository extends JpaRepository<Booking, Long> {
 }
