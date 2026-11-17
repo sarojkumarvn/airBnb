@@ -1,7 +1,7 @@
 package com.codingShuttle.projects.airBnbApp.controller;
 
-import com.codingShuttle.projects.airBnbApp.dto.HotelDto;
 import com.codingShuttle.projects.airBnbApp.dto.HotelInfoDto;
+import com.codingShuttle.projects.airBnbApp.dto.HotelPriceDto;
 import com.codingShuttle.projects.airBnbApp.dto.HotelSearchRequest;
 import com.codingShuttle.projects.airBnbApp.service.HotelService;
 import com.codingShuttle.projects.airBnbApp.service.InventoryService;
@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/hotels")
