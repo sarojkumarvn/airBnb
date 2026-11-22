@@ -3,7 +3,6 @@ package com.codingShuttle.projects.airBnbApp.repository;
 import com.codingShuttle.projects.airBnbApp.entity.Hotel;
 import com.codingShuttle.projects.airBnbApp.entity.Inventory;
 import com.codingShuttle.projects.airBnbApp.entity.Room;
-
 import jakarta.persistence.LockModeType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
