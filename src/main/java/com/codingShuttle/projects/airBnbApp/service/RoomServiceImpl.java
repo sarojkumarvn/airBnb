@@ -3,12 +3,15 @@ package com.codingShuttle.projects.airBnbApp.service;
 import com.codingShuttle.projects.airBnbApp.dto.RoomDto;
 import com.codingShuttle.projects.airBnbApp.entity.Hotel;
 import com.codingShuttle.projects.airBnbApp.entity.Room;
+import com.codingShuttle.projects.airBnbApp.entity.User;
 import com.codingShuttle.projects.airBnbApp.exception.ResourceNotFoundException;
+import com.codingShuttle.projects.airBnbApp.exception.UnAuthorisedException;
 import com.codingShuttle.projects.airBnbApp.repository.HotelRepository;
 import com.codingShuttle.projects.airBnbApp.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +34,10 @@ public class RoomServiceImpl implements RoomService{
         Hotel hotel = hotelRepository
                 .findById(hotelId)
                 .orElseThrow(() -> new ResourceNotFoundException("Hotel not found with ID: "+hotelId));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal() ;
+        if(!user.equals(hotel.getOwner())) {
+            throw new UnAuthorisedException("The user does not own this hotel with id  " + hotelId) ;
+        }
         Room room = modelMapper.map(roomDto, Room.class);
         room.setHotel(hotel);
         room = roomRepository.save(room);
