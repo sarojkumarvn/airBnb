@@ -1,9 +1,11 @@
 package com.codingShuttle.projects.airBnbApp.strategy;
 
 import com.codingShuttle.projects.airBnbApp.entity.Inventory;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 public class PricingService {
 
 
